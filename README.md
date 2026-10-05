@@ -47,7 +47,18 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 ORS_API_KEY=your-openrouteservice-api-key
 ```
 
-`ORS_API_KEY` is used for both the openrouteservice directions API and the Pelias geocoding API. You can get a free key at [openrouteservice.org](https://openrouteservice.org/dev/#/signup).
+`ORS_API_KEY` is used for both the openrouteservice directions API and the HeiGIT Pelias geocoding API, so one key covers both.
+
+### Getting an API key
+
+Both services are run by [HeiGIT](https://heigit.org/), and one free HeiGIT account gives a key that works for both:
+
+1. Go to [account.heigit.org](https://account.heigit.org/) and choose **Go sign up now**, or **Login with GitHub**.
+2. Confirm your email address if asked, then log in.
+3. Copy the API key shown in your account dashboard.
+4. Paste it into `.env` as `ORS_API_KEY`.
+
+The free plan has daily and per-minute request limits. The CSV has about 3,900 unique cities, and the import command geocodes each one, so a first import can take a while and may hit these limits. If it stops partway, run it again: stations already saved are skipped.
 
 `PROJECT_ENV` selects a settings file from `fuel_station/environments/` (`local`, `development`, `staging`, `uat`, `dryrun` or `production`).
 
