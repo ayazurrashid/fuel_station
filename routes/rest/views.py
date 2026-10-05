@@ -4,7 +4,7 @@ from routes.services import TripException, TripPlanner
 
 
 class TripPlanView(APIView):
-    """GET /api/route/?start=New York, NY&finish=Los Angeles, CA"""
+    """GET /api/routes/route/?start=New York, NY&finish=Los Angeles, CA"""
 
     def get(self, request):
         start, finish = request.query_params.get("start"), request.query_params.get("finish")
