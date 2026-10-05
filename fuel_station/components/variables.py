@@ -1,0 +1,6 @@
+ENV_DEVELOPMENT = 'development'
+ENV_LOCAL = 'local'
+ENV_PRODUCTION = 'production'
+ENV_STAGING = 'staging'
+ENV_DRYRUN = 'dryrun'
+ENV_UAT = 'uat'
