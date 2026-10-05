@@ -31,7 +31,6 @@ class Command(BaseCommand):
         self.pelias = PeliasClient(api_key, timeout=30)
 
         coords = self.known_coords()
-        to_save = []
         stations = self.read_csv()
 
         for station in stations:
@@ -41,11 +40,10 @@ class Command(BaseCommand):
                 coords[key] = self.geocode(*key)  # None = not found; still cached so it isn't retried
             if coords[key]:
                 station["lat"], station["lng"] = coords[key]
-                to_save.append(Station(**station))
                 Station.objects.create(**station)
 
         StationLocator.reset()
-        self.stdout.write(self.style.SUCCESS(f"Saved {len(to_save)} stations."))
+        self.stdout.write(self.style.SUCCESS(f"Saved stations."))
 
     def known_coords(self):
         """Coordinates already in the database, keyed by city."""
